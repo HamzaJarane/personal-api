@@ -7,10 +7,14 @@
 |
 */
 
+import ContactsController from '#controllers/contacts_controller'
 import router from '@adonisjs/core/services/router'
+import { throttle } from '#start/limiter'
 
 router.get('/', async () => {
   return {
-    hello: 'world',
+    status: 'ok',
   }
-})
+}).use(throttle);
+
+router.post('/contact', [ContactsController, 'store']).use(throttle);
