@@ -40,5 +40,6 @@ jobs:
         SCRIPT_AFTER: |
           cd ${{ secrets.REMOTE_TARGET }}
           npm install
-          pm2 startOrReload ecosystem.config.js
+          node ${{ secrets.REMOTE_TARGET }}/build/ace.js migration:run --force
+          pm2 startOrReload ecosystem.config.cjs
           pm2 save
