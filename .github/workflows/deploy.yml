@@ -25,14 +25,9 @@ jobs:
       run: npm run build 
 
     - name: Set up WireGuard
-      uses: egor-tensin/setup-wireguard@v1
+      uses: niklaskeerl/easy-wireguard-action@v2
       with:
-        endpoint: '${{ secrets.TUNNEL_ENDPOINT }}'
-        endpoint_public_key: '${{ secrets.TUNNEL_ENDPOINT_PUBLIC_KEY }}'
-        ips: '${{ secrets.TUNNEL_IPS }}'
-        allowed_ips: '${{ secrets.TUNNEL_ALLOWED_IPS }}'
-        private_key: '${{ secrets.TUNNEL_PRIVATE_KEY }}'
-        preshared_key: '${{ secrets.TUNNEL_PRESHARED_KEY }}'
+        WG_CONFIG_FILE: ${{ secrets.WG_CONFIG_FILE }}
 
     - name: Deploy to Production
       uses: easingthemes/ssh-deploy@main
