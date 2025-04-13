@@ -39,7 +39,8 @@ jobs:
         TARGET: ${{ secrets.REMOTE_TARGET }}
         SCRIPT_AFTER: |
           cd ${{ secrets.REMOTE_TARGET }}
-          npm install
-          node ${{ secrets.REMOTE_TARGET }}/build/ace.js migration:run --force
-          pm2 startOrReload ecosystem.config.cjs
-          pm2 save
+          
+          /${{ secrets.REMOTE_USER }}/.nvm/versions/node/v20.12.2/bin/npm install
+          /${{ secrets.REMOTE_USER }}/.nvm/versions/node/v20.12.2/bin/node ${{ secrets.REMOTE_TARGET }}/build/ace.js migration:run --force
+          /${{ secrets.REMOTE_USER }}/.nvm/versions/node/v20.12.2/bin/pm2 startOrReload ecosystem.config.cjs
+          /${{ secrets.REMOTE_USER }}/.nvm/versions/node/v20.12.2/bin/pm2 save
