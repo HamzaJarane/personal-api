@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
     "build": "node ace build",
@@ -43,26 +42,74 @@
     "@swc/core": "1.10.7",
     "@types/luxon": "^3.6.2",
     "@types/node": "^22.13.2",
+    "@vitejs/plugin-react": "^4.4.1",
     "eslint": "^9.20.1",
     "hot-hook": "^0.4.0",
     "pino-pretty": "^13.0.0",
     "prettier": "^3.5.0",
     "ts-node-maintained": "^10.9.5",
-    "typescript": "~5.7"
+    "typescript": "~5.7",
+    "vite": "^6.3.3",
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-transform-react-jsx": "^7.24.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.19",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-styled-components": "^2.1.4",
+    "custom-cursor": "^2.2.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "twin.macro": "^3.4.1"
   },
   "dependencies": {
     "@adonisjs/auth": "^9.3.1",
     "@adonisjs/core": "^6.17.2",
     "@adonisjs/cors": "^2.2.1",
     "@adonisjs/i18n": "^2.2.0",
+    "@adonisjs/inertia": "^3.1.1",
     "@adonisjs/limiter": "^2.3.3",
     "@adonisjs/lucid": "^21.6.0",
     "@adonisjs/mail": "^9.2.2",
+    "@adonisjs/vite": "^4.0.0",
+    "@inertiajs/react": "^2.0.8",
     "@vinejs/vine": "^3.0.0",
     "edge.js": "^6.2.1",
     "luxon": "^3.6.1",
     "mysql2": "^3.14.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "@emotion/react": "^11.11.4",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@gsap/react": "^2.1.1",
+    "@types/gsap": "^3.0.0",
+    "@types/node": "^20.14.2",
+    "@vitejs/plugin-react": "^4.3.0",
+    "axios": "^1.7.9",
+    "gsap": "^3.12.5",
+    "i18next": "^24.2.0",
+    "i18next-browser-languagedetector": "^8.0.2",
+    "i18next-http-backend": "^3.0.1",
+    "path": "^0.12.7",
+    "react": "^18.3.1",
+    "react-contexify": "^6.0.0",
+    "react-dom": "^18.3.1",
+    "react-gsap": "^3.2.1",
+    "react-i18next": "^15.4.0",
+    "react-markdown": "^9.0.3",
+    "react-router-dom": "^7.1.1",
+    "rehype-raw": "^7.0.0",
+    "styled-components": "^6.1.11",
+    "swr": "^2.3.0",
+    "vite-plugin-pwa": "^0.20.0"
   },
   "hotHook": {
     "boundaries": [
@@ -70,5 +117,10 @@
       "./app/middleware/*.ts"
     ]
   },
-  "prettier": "@adonisjs/prettier-config"
+  "prettier": "@adonisjs/prettier-config",
+  "babelMacros": {
+    "twin": {
+      "styled": "styled-components"
+    }
+  }
 }

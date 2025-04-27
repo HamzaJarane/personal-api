@@ -35,7 +35,9 @@ export default defineConfig({
     () => import('@adonisjs/mail/mail_provider'),
     () => import('@adonisjs/core/providers/edge_provider'),
     () => import('@adonisjs/limiter/limiter_provider'),
-    () => import('@adonisjs/i18n/i18n_provider')
+    () => import('@adonisjs/i18n/i18n_provider'),
+    () => import('@adonisjs/inertia/inertia_provider'),
+    () => import('@adonisjs/vite/vite_provider')
   ],
 
   /*
@@ -79,6 +81,14 @@ export default defineConfig({
   {
     pattern: 'resources/lang/**/*.{json,yaml,yml}',
     reloadServer: false,
+  },
+  {
+    pattern: 'public/**',
+    reloadServer: false,
   }
-  ]
+  ],
+  hooks: {
+    onBuildStarting: [() => import('@adonisjs/vite/build_hook')]
+  },
+    assetsBundler: false
 })
