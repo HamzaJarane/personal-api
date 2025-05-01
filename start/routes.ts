@@ -14,3 +14,5 @@ import { throttle } from '#start/limiter'
 router.post('/contact', [ContactsController, 'store']).use(throttle);
 
 router.on('/').renderInertia('Home');
+router.on('/blog').renderInertia('Blog');
+router.on('/post/:post').renderInertia('Post');
