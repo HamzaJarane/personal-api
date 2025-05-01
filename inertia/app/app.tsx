@@ -22,6 +22,12 @@ createInertiaApp({
   },
 
   setup({ el, App, props }) {
-    hydrateRoot(el, <><GlobalStyles /> <App {...props} /></>)
+    hydrateRoot(
+      el,
+      <>
+        <GlobalStyles />
+        <App {...props} />
+      </>
+    )
   },
 });

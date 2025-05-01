@@ -11,13 +11,14 @@ import { BlogCategory, BlogRow } from '@/helpers/StyledComponents';
 import FooterProfileCard from '@/components/Cards/FooterProfileCard';
 import { useTranslation } from 'react-i18next';
 import UtterancesComments from '@/components/Blog/utterancesComments';
+import Layout from '@/layouts'
 
 function Page() {
     // const { slug } = useParams() as { slug: string };
     // const { data, error, isLoading } = useSWR(slug, getPage);
     // const { t, i18n } = useTranslation();
     // const pages = getBlogPages();
-    
+
     // const pageMetaData = getPageMetaBySlug(slug);
     // const gotoPage = (slug: string) => router.visit(`/blog/${slug}`);
 
@@ -84,6 +85,7 @@ function Page() {
     )
 }
 
+Page.layout = (children: any) => <Layout title='Post' children={children} spaceTop ignoreBlock />;
 
 const formatPublishedAt = (date: string, locale: string = 'en-US') => {
     return new Intl.DateTimeFormat(locale, {

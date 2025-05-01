@@ -18,6 +18,7 @@ function Work() {
                     //     scrub
                     // >
                             <WorkRow
+                                key={work.name}
                                 onClick={() => window.open(work.link, work.link !== '#' ? '_blank' : '_self')}
                                 css={tw`w-full`}
                             >

@@ -10,9 +10,9 @@
 import ContactsController from '#controllers/contacts_controller'
 import router from '@adonisjs/core/services/router'
 import { throttle } from '#start/limiter'
-
-router.post('/contact', [ContactsController, 'store']).use(throttle);
+import BlogController from '#controllers/blog_controller';
 
 router.on('/').renderInertia('Home');
-router.on('/blog').renderInertia('Blog');
-router.on('/post/:post').renderInertia('Post');
+router.get('/blog', [BlogController, 'index']);
+router.get('/blog/:post', [BlogController, 'show']);
+router.post('/contact', [ContactsController, 'store']).use(throttle);

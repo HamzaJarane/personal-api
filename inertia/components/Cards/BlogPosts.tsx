@@ -27,8 +27,8 @@ function BlogPosts() {
                                         page.categories.length === 1 && tw`grid-cols-1`
                             ]}
                         >
-                            {page.categories.map((category) => (
-                                <BlogCategory className='blogCategory'>
+                            {page.categories.map((category: any) => (
+                                <BlogCategory key={category} className='blogCategory'>
                                     <div>{category}</div>
                                 </BlogCategory>
                             ))}

@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import tw, { styled, css } from 'twin.macro';
 import Menu from './Icons/Menu';
-import { useTranslation } from 'react-i18next';
-// import { useLocation } from 'react-router-dom';
+// import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link, router } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
+import i18n from "i18next";
 
 const Nav = styled.button<{ active?: boolean }>`
     ${tw`bg-white text-black border-2 border-black flex justify-center items-center rounded-2xl p-2`}
@@ -19,34 +19,6 @@ const Nav = styled.button<{ active?: boolean }>`
         ${tw`bg-black text-white scale-105 transition-all ease-in-out duration-300`}
     }
 `;
-
-// const SideBarSection = styled.div`
-//     ${tw`w-[65px] relative z-20 hidden bg-white lg:flex flex-col gap-4 p-3 transition-all ease-in-out duration-300`}
-
-//     &:hover {
-//         ${tw`w-[300px]`}
-   
-//         > :nth-child(2) {
-//             ${tw`!flex`}
-//         }
-//     }
-// `;
-
-// const SideBarSectionPhone = styled.div<{ menuOpen: boolean }>`
-//     ${tw`h-0 fixed z-20 lg:hidden bg-transparent flex flex-col gap-4 p-3`}
-//     width: 100%;
-//     transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  
-//     ${({ menuOpen }) => menuOpen && css`
-//         ${tw`bg-white`}
-
-//         height: 350px;
-        
-//         & > :nth-child(2) {
-//             ${tw`flex`}
-//         }
-//     `}
-// `;
 
 const SideBarSection = styled.div<{ menuOpen?: boolean, isBlogPage?: boolean }>`
   ${tw`fixed z-20 flex flex-col gap-4 p-3 overflow-hidden`}
@@ -89,58 +61,58 @@ const SideBarSection = styled.div<{ menuOpen?: boolean, isBlogPage?: boolean }>`
 `;
 
 function SideBar() {
-    const { t } = useTranslation();
+    const { t } = i18n;
     const { currentLanguage, changeLanguage } = useLanguage();
-    // const location = useLocation();
+    const { url } = usePage();
     const [menuOpen, setMenuOpen] = useState(false);
-    
+
     const Buttons = useMemo(() => [
         {
-            name: t('nav.about-me'),
+            name: i18n.t('nav.about-me'),
             id: 'about-me',
             link: '/',
-            disabled: location.pathname.includes('blog'),
+            disabled: url.includes('blog'),
         },
         {
             name: t('nav.experience'),
             id: 'experience',
             link: '/',
-            disabled: location.pathname.includes('blog'),
+            disabled: url.includes('blog'),
         },
         {
             name: t('nav.work'),
             id: 'work',
             link: '/',
-            disabled: location.pathname.includes('blog'),
+            disabled: url.includes('blog'),
         },
         {
             name: t('nav.open-source'),
             id: 'open-source',
             link: '/',
-            disabled: location.pathname.includes('blog'),
+            disabled: url.includes('blog'),
         },
         {
             name: t('nav.home'),
             link: '/',
-            disabled: location.pathname === '/',
+            disabled: url === '/',
         },
         {
             name: t('nav.blog'),
             link: '/blog',
-            disabled: location.pathname === '/blog',
+            disabled: url === '/blog',
         },
-    ], [location.pathname]);
+    ], [url, i18n]);
 
-    const onClick = (nav: (typeof Buttons)[number]) => {
-        if(!nav?.id) {
+    const onClick = (nav: any) => {
+        if (!nav?.id) {
             router.visit(nav.link);
         } else {
-            if(location.pathname !== nav.link) {
+            if (location.pathname !== nav.link) {
                 router.visit(nav.link);
             }
 
             const element = document.getElementById(nav.id);
-            if(element) {
+            if (element) {
                 element.scrollIntoView({ behavior: 'smooth' })
             }
         }
@@ -160,14 +132,15 @@ function SideBar() {
                 />
             </div>
 
-            <div 
+            <div
                 css={tw`flex flex-col gap-4 opacity-0 transition-all ease-in-out duration-300 h-full`}
             >
-                {Buttons.filter((btn) => !btn.disabled).map((nav) => (
+                {Buttons.filter((btn) => !btn.disabled).map((nav, key) => (
                     <Nav
+                        key={key}
                         onClick={() => onClick(nav)}
                     >
-                        {nav.name} 
+                        {nav.name}
                     </Nav>
                 ))}
 
@@ -179,7 +152,7 @@ function SideBar() {
                         active={currentLanguage === 'en'}
                         onClick={() => changeLanguage('en')}
                     >
-                        English 
+                        English
                     </Nav>
                     <Nav
                         css={tw`w-full`}
