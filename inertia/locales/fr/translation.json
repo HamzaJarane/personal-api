@@ -38,8 +38,8 @@
     },
     "aboutme": {
         "title": "À propos de moi",
-        "0": "Je m'appelle <0>{{name}}</0>, j'ai <1>{{age}}</1> ans et je viens de <2>{{country}}</2>.",
-        "1": "En <0>2020</0>, j'ai commencé ma carrière en tant qu'<1>administrateur Linux</1>, ce qui a déclenché ma passion pour le <2>DevOps</2> et le <3>développement web</3>. Aujourd'hui, en tant que <4>développeur full-stack</4> avec plus de deux ans d'expérience, je me spécialise dans la création de sites web et d'applications web conviviaux en utilisant des technologies modernes.",
+        "0": "Je m'appelle <0>{{name}}</0>, j'ai <1>{{age}}</1> ans et je viens du <2>{{country}}</2>.",
+        "1": "Ma carrière a débuté en <0>2020</0>, en tant qu’<1>administrateur Linux</1>, une expérience qui a éveillé ma passion pour le <2>DevOps</2> et le <3>développement web</3>. Aujourd’hui, je suis <4>développeur full-stack</4> avec plus de deux ans d’expérience, spécialisé dans la création de sites et d’applications web intuitifs, performants et modernes.",
         "2": "Langues",
         "3": "Frameworks"
     },

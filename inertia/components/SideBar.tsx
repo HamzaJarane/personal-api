@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react'
 import tw, { styled, css } from 'twin.macro';
 import Menu from './Icons/Menu';
-// import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link, router, usePage } from '@inertiajs/react';
-import i18n from "i18next";
+import { router, usePage } from '@inertiajs/react';
+import i18n from '@/i18n';
 
 const Nav = styled.button<{ active?: boolean }>`
     ${tw`bg-white text-black border-2 border-black flex justify-center items-center rounded-2xl p-2`}
