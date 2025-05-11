@@ -16,3 +16,4 @@ router.on('/').renderInertia('Home');
 router.get('/blog', [BlogController, 'index']);
 router.get('/blog/:post', [BlogController, 'show']);
 router.post('/contact', [ContactsController, 'store']).use(throttle);
+
